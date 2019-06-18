@@ -45,10 +45,10 @@
 
     <section class="about" id="about">
         <div class="container">
-            <div class="profile-img">
+            <div class="profile-img" data-aos="fade-right" data-aos-delay="300">
                 <img src="images/profile.jpeg" alt="">
             </div>
-            <div class="about-details">
+            <div class="about-details" data-aos="fade-left" data-aos-delay="600">
                 <div class="about-heading">
                     <h1>About</h1>
                     <h6>Myself</h6>
@@ -87,8 +87,8 @@
                 <h1>Services</h1>
                 <h6>What I can do for you</h6>
             </div>
-            <div class="skills">
-                <div class="skill">
+            <div class="my-skills">
+                <div class="skill" data-aos="fade-in" data-aos-delay="300">
                     <div class="icon-container">
                         <i class="fas fa-layer-group"></i>
                     </div>
@@ -99,7 +99,7 @@
                             his is stuff about my lifr i giesshis is stuff about my lifr i giesshis is stuff about my lifr i giess
                     </p>
                 </div>
-                <div class="skill">
+                <div class="skill" data-aos="fade-in" data-aos-delay="600">
                         <div class="icon-container">
                             <i class="fas fa-code"></i>
                         </div>
@@ -110,7 +110,7 @@
                                 his is stuff about my lifr i giesshis is stuff about my lifr i giesshis is stuff about my lifr i giess
                         </p>
                 </div>
-                <div class="skill">
+                <div class="skill" data-aos="fade-in" data-aos-delay="900">
                         <div class="icon-container">
                             <i class="fas fa-chart-bar"></i>
                         </div>
@@ -132,10 +132,10 @@
                     <h6>Some of my recent work</h6>
                 </div>
                 <div class="portfolio-item">
-                    <div class="portfolio-img has-margin-right">
+                    <div class="portfolio-img has-margin-right" data-aos="fade-right" data-aos-delay="300">
                         <img src="images/portitem1.jpeg" alt="">
                     </div>
-                    <div class="portfolio-description">
+                    <div class="portfolio-description" data-aos="fade-left" data-aos-delay="600">
                         <h6>Web Development</h6>
                         <h1>Blog Website</h1>
                         <p>
@@ -148,7 +148,7 @@
                         <a href="#" class="cta">View Details</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-aos="fade-right" data-aos-delay="900">
                         <div class="portfolio-description has-margin-right">
                                 <h6>Web Design</h6>
                                 <h1>Some Web Design BS</h1>
@@ -161,15 +161,15 @@
                                 </p>
                                 <a href="#" class="cta">View Details</a>
                             </div>
-                        <div class="portfolio-img has-margin-right">
+                        <div class="portfolio-img" data-aos="fade-left" data-aos-delay="1200">
                             <img src="images/portitem2.jpeg" alt="">
                         </div>
                     </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-aos="fade-right" data-aos-delay="1500">
                     <div class="portfolio-img has-margin-right">
                         <img src="images/portitem3.jpeg" alt="">
                     </div>
-                    <div class="portfolio-description">
+                    <div class="portfolio-description" data-aos="fade-left" data-aos-delay="1800">
                         <h6>Web Development</h6>
                         <h1>Blog Website</h1>
                         <p>
@@ -191,7 +191,7 @@
                     <h1>Experience</h1>
                     <h6>Past and Current Jobs</h6>
                 </div>
-                <div class="timeline">
+                <div class="timeline" data-aos="fade-down" data-aos-delay="300">
                     <ul>
                         <li class="date" data-date="2011 - Present">
                             <h1>Google</h1>
@@ -222,10 +222,10 @@
                     <h1>Contact</h1>
                     <h6>Lets work together</h6>
                 </div>
-                <form action="">
+                <form action="http://formspree.io/achavez@student.42.us.org" data-aos="fade-up" data-aos-delay="300" method="POST">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Enter your name..." required>
-                    <label for="email">Email:</label>
+                    <label for="email" name="_replyto">Email:</label>
                     <input type="text" id="email" name="email" placeholder="Enter your email..." required>
                     <label for="service">Services:</label>
                     <select name="services" id="service">
@@ -234,8 +234,8 @@
                         <option value="">Game Development</option>
                     </select>
                     <label for="subject">Subject:</label>
-                    <textarea name="subject" id="subject" cols="10" rows="10"></textarea>
-                    <input type="submit" value="Submit">
+                    <textarea name="body" id="subject" cols="10" rows="10"></textarea>
+                    <input type="submit" value="Send">
                 </form>
             </div>
         </section>
