@@ -157,6 +157,13 @@ body.menu-open { overflow: hidden; }
 .shot figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2rem 1rem .8rem; text-align: left; color: var(--fg); font-size: .9rem; font-weight: 500;
   background: linear-gradient(transparent, rgba(0, 0, 0, .7)); opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; }
 .shot:hover figcaption, .shot:focus-visible figcaption { opacity: 1; transform: none; }
+.appicon { width: 84px; height: 84px; border-radius: 20px; border: 2px solid rgba(255, 255, 255, .25); box-shadow: 0 10px 40px rgba(0, 0, 0, .5), 0 0 0 6px rgba(243, 182, 90, .15);
+  animation: bob 4s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-6px) rotate(-3deg); } }
+.art { display: grid; grid-template-columns: 1fr; gap: .8rem; }
+.icons { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
+.icons .shot { width: calc(50% - .4rem); max-width: 14rem; aspect-ratio: 1; border-radius: 22%; }
+.icons .shot::after { border-radius: 22%; }
 .closing { margin: 6rem 0 0; padding: 4rem 1.5rem; text-align: center; border-radius: 24px; position: relative; overflow: hidden;
   background: radial-gradient(60% 120% at 50% 0%, rgba(90, 209, 243, .18), transparent 70%), linear-gradient(160deg, #142035, #0f1724); border: 1px solid var(--line); }
 .closing h2 { margin-bottom: .6rem; }
@@ -182,6 +189,8 @@ body.menu-open { overflow: hidden; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .gallery .shot:first-child { grid-column: 1 / -1; }
+  .art { grid-template-columns: repeat(2, 1fr); }
+  .art .shot:first-child { grid-column: 1 / -1; }
 }
 @media (min-width: 1024px) {
   .features { grid-template-columns: repeat(3, 1fr); }
@@ -190,7 +199,7 @@ body.menu-open { overflow: hidden; }
   .sos .top { padding-inline: max(48px, calc((100vw - 70rem) / 2)); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero .bg, .sos h1, .orbs span { animation: none; }
+  .hero .bg, .sos h1, .orbs span, .appicon { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
