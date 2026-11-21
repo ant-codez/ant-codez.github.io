@@ -231,6 +231,31 @@ body.menu-open { overflow: hidden; }
 .demo section a, .demo .note a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--dim); text-underline-offset: 3px; }
 .demo .note { font-size: .85rem; color: var(--dim); }
 
+/* fillit demo */
+.palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.2rem, 1fr)); gap: .45rem; }
+.palette button { aspect-ratio: 1; padding: 6px; border-radius: 8px; border: 1px solid var(--line); background: #0b111b; cursor: pointer; display: grid; }
+.palette button:hover { border-color: var(--accent); }
+.palette svg { width: 100%; height: 100%; }
+.row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.row .btn { padding: .6rem 1.1rem; font-size: .92rem; border: 0; cursor: pointer; font-family: inherit; }
+.btn.small { color: var(--fg); background: transparent; border: 1px solid var(--line) !important; }
+.btn.small:hover { border-color: var(--accent) !important; }
+.btn.go { color: #10151f; background: linear-gradient(90deg, var(--accent), #ffd889); }
+.btn:disabled { opacity: .5; cursor: default; }
+.pieces { display: flex; flex-wrap: wrap; gap: .35rem; min-height: 2.2rem; }
+.pieces span { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .5rem .2rem .3rem; border-radius: 6px; background: #0b111b; border: 1px solid var(--line); font-size: .8rem; font-weight: 700; color: var(--fg); cursor: pointer; }
+.pieces span svg { width: 22px; height: 22px; }
+.pieces span:hover { border-color: #f59a9a; }
+.board { display: grid; gap: 3px; width: min(100%, 26rem); margin: 0 auto; padding: 10px; border-radius: 12px; background: #0b111b; border: 1px solid var(--line); }
+.board i { aspect-ratio: 1; border-radius: 4px; background: rgba(148, 162, 184, .06); display: grid; place-items: center; font-style: normal; font-size: .7rem; font-weight: 700; color: rgba(0, 0, 0, .55);
+  opacity: 0; transform: scale(.6); animation: pop .35s cubic-bezier(.2, .9, .3, 1.3) forwards; }
+@keyframes pop { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .board i { animation: none; opacity: 1; transform: none; } }
+.demo details { border: 1px solid var(--line); border-radius: 10px; padding: .7rem 1rem; }
+.demo summary { cursor: pointer; color: var(--fg); font-weight: 600; font-size: .92rem; }
+.demo pre { margin: .6rem 0 0; font-size: .85rem; color: var(--fg); white-space: pre; overflow-x: auto; }
+.status { font-size: .9rem; }
+
 /* Case-study pages */
 .study { max-width: 44rem; margin: 0 auto; padding-block: 4rem 5rem; display: grid; gap: 2.25rem; position: relative; z-index: 1;
   padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
