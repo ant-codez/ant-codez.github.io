@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1520">
+<title>fillit · Anthony Chavez</title>
+<meta name="description" content="fillit, a tetromino-packing solver in C from 42 Silicon Valley, compiled to WebAssembly so you can run it in the browser.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+<nav class="mnav" id="mnav" aria-label="Menu"><a href="../#about"><small>01</small>About</a><a href="../#experience"><small>02</small>Experience</a><a href="../#projects"><small>03</small>Projects</a><a href="../#education"><small>04</small>Education</a><a href="../resume/Anthony_Chavez_Resume.pdf" target="_blank" rel="noopener"><small>05</small>Resume ↗</a>
+  <div class="social"><a href="https://github.com/ant-codez" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a href="https://www.linkedin.com/in/anthony-chavezdev" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="mailto:anthonychavez1337@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg></a><a href="../resume/Anthony_Chavez_Resume.pdf" target="_blank" rel="noopener" aria-label="Resume (PDF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></a></div>
+</nav>
+<main class="demo">
+  <a class="back" href="../index.html#education">← Anthony Chavez</a>
+  <header>
+    <p class="kicker">42 Silicon Valley · C · team project</p>
+    <h1>fillit</h1>
+    <p class="lead">Give it a set of Tetris pieces and it packs them into the smallest square possible, by backtracking through every placement. Build a set below and press Solve: it runs the original C program, compiled to WebAssembly, in your browser.</p>
+  </header>
+
+  <div class="tryit">
+    <label>Add pieces <span class="note">(up to 12; the search grows exponentially with each one)</span></label>
+    <div class="palette" id="palette"></div>
+    <div class="pieces" id="pieces" aria-live="polite"></div>
+    <div class="row">
+      <button class="btn go" id="solve" type="button">Solve</button>
+      <button class="btn small" id="rand" type="button">Random set</button>
+      <button class="btn small" id="clear" type="button">Clear</button>
+    </div>
+    <p class="status" id="status" aria-live="polite">Loading…</p>
+    <div class="board" id="board" hidden></div>
+    <details><summary>The input file and the program's output</summary><pre id="io"></pre></details>
+  </div>
+
+  <section>
+    <h2>How it works</h2>
+    <p>Each piece is read from a text file of 4×4 blocks and validated: exactly four <code>#</code> cells, all connected. The solver starts with the smallest square that could hold every piece, tries each piece in each position in order, and backs up when a piece no longer fits. If nothing works it grows the square by one and starts again, so the first answer is always the smallest square.</p>
+    <p>This page runs the same C source as the 2020 repository, unchanged. I compiled it to WebAssembly with clang and wrote a small shim that stands in for <code>malloc</code>, <code>read</code> and <code>write</code>. On 122 test inputs it prints exactly what the native build prints. It runs in a background worker, so a big set never freezes the page.</p>
+  </section>
+  <p class="note">Built at 42 Silicon Valley with a classmate. Source: <a href="https://github.com/ant-codez/fillit" target="_blank" rel="noopener">github.com/ant-codez/fillit</a>.</p>
+</main>
+<script>
+(function () {
+  var SHAPES = ["####", "#\n#\n#\n#", "##\n##", "###\n#", "###\n..#", "###\n.#", "#\n##\n#", ".#\n##\n.#", ".#\n###", "#\n###", "..#\n###",
+    "#\n#\n##", ".#\n.#\n##", "##\n#\n#", "##\n.#\n.#", "##.\n.##", ".##\n##.", "#\n##\n.#", ".#\n##\n#"].map(function (s) {
+    var c = []; s.split("\n").forEach(function (l, r) { l.split("").forEach(function (ch, k) { if (ch === "#") c.push([r, k]); }); }); return c;
+  });
+  var MAX = 12, set = [], worker = null, timer = null, bytes = null;
+  var $ = function (id) { return document.getElementById(id); };
+  function color(i) { return "hsl(" + Math.round(i * 137.5 % 360) + " 75% 62%)"; }
+  function svg(cells, fill) {
+    return '<svg viewBox="0 0 4 4" aria-hidden="true">' + cells.map(function (c) { return '<rect x="' + (c[1] + .08) + '" y="' + (c[0] + .08) + '" width=".84" height=".84" rx=".15" fill="' + fill + '"/>'; }).join("") + "</svg>";
+  }
+  function fileText() {
+    return set.map(function (k) {
+      var g = [["....".split(""), "....".split(""), "....".split(""), "....".split("")]][0].map(function (r) { return r.slice(); });
+      SHAPES[k].forEach(function (c) { g[c[0]][c[1]] = "#"; });
+      return g.map(function (r) { return r.join(""); }).join("\n") + "\n";
+    }).join("\n");
+  }
+  function draw() {
+    $("pieces").innerHTML = set.length ? set.map(function (k, i) { return '<span title="Remove" data-i="' + i + '">' + svg(SHAPES[k], color(i)) + String.fromCharCode(65 + i) + "</span>"; }).join("") : '<span style="cursor:default">No pieces yet</span>';
+    $("solve").disabled = !set.length || !bytes;
+  }
+  SHAPES.forEach(function (c, k) {
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Add piece " + (k + 1)); b.innerHTML = svg(c, "#94a2b8");
+    b.onclick = function () { if (set.length < MAX) { set.push(k); draw(); } }; $("palette").appendChild(b);
+  });
+  $("pieces").onclick = function (e) { var s = e.target.closest("[data-i]"); if (s) { set.splice(+s.dataset.i, 1); draw(); } };
+  $("clear").onclick = function () { set = []; draw(); $("board").hidden = true; $("status").textContent = "Add some pieces."; };
+  $("rand").onclick = function () { set = []; var n = 5 + Math.floor(Math.random() * 4); while (n--) set.push(Math.floor(Math.random() * SHAPES.length)); draw(); solve(); };
+  var WORKER = "onmessage=async function(e){var m=await WebAssembly.instantiate(e.data.bytes);var x=m.instance.exports;var b=new TextEncoder().encode(e.data.text);new Uint8Array(x.memory.buffer).set(b,x.input_ptr());var t=performance.now();var n=x.run(b.length);var o=new TextDecoder().decode(new Uint8Array(x.memory.buffer,x.output_ptr(),n));postMessage({out:o,ms:performance.now()-t});};";
+  function stop() { if (worker) { worker.terminate(); worker = null; } clearTimeout(timer); }
+  function solve() {
+    if (!set.length || !bytes) return;
+    stop();
+    var text = fileText();
+    $("status").textContent = "Solving…"; $("solve").disabled = true;
+    worker = new Worker(URL.createObjectURL(new Blob([WORKER], { type: "text/javascript" })));
+    timer = setTimeout(function () { stop(); $("solve").disabled = false; $("status").textContent = "Stopped after 15 seconds: that set is too slow for a brute-force search. Try fewer pieces."; }, 15000);
+    worker.onmessage = function (e) {
+      stop(); $("solve").disabled = false;
+      var rows = e.data.out.trim().split("\n"), n = rows.length;
+      $("io").textContent = "$ ./fillit pieces.txt\n" + e.data.out + "\n# pieces.txt\n" + text;
+      if (rows[0] === "error") { $("status").textContent = "The program rejected that input."; $("board").hidden = true; return; }
+      $("status").textContent = set.length + " piece" + (set.length > 1 ? "s" : "") + " in a " + n + "×" + n + " square, solved in " + (e.data.ms < 1 ? "under 1" : Math.round(e.data.ms)) + " ms.";
+      var bd = $("board"); bd.hidden = false; bd.style.gridTemplateColumns = "repeat(" + n + ", 1fr)";
+      bd.innerHTML = rows.map(function (r) { return r.split("").map(function (ch) {
+        if (ch === ".") return '<i style="animation-delay:0ms"></i>';
+        var i = ch.charCodeAt(0) - 65; return '<i style="background:' + color(i) + ';animation-delay:' + (i * 60) + 'ms">' + ch + "</i>"; }).join(""); }).join("");
+    };
+    worker.postMessage({ bytes: bytes, text: text });
+  }
+  $("solve").onclick = solve;
+  fetch("fillit.wasm").then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); }).then(function (b) {
+    bytes = b; set = [2, 0, 5, 15, 9]; draw(); solve();
+  }).catch(function () { $("status").textContent = "The program did not load. Refresh the page to try again."; });
+  draw();
+})();
+</script>
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var spot = document.querySelector('.spot');
+  if (spot && !reduce) {
+    addEventListener('pointermove', function (e) {
+      spot.style.setProperty('--x', e.clientX + 'px');
+      spot.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  }
+
+  // Mobile menu
+  var btn = document.querySelector('.menu-btn'), mnav = document.getElementById('mnav');
+  function setMenu(open) {
+    if (!btn) return;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mnav.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    if (open) { var f = mnav.querySelector('a'); if (f) f.focus({ preventScroll: true }); }
+  }
+  if (btn) {
+    btn.addEventListener('click', function () { setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+    mnav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); btn.focus(); } });
+    matchMedia('(min-width: 1024px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+  }
+
+  // Sidebar: highlight the section in view
+  var links = document.querySelectorAll('nav.sections a');
+  if (links.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('on'); });
+          var a = byId[en.target.id]; if (a) a.classList.add('on');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
+  // Game page: reveal on scroll, count-up stats
+  var rev = document.querySelectorAll('.reveal');
+  if (rev.length) {
+    if (reduce || !('IntersectionObserver' in window)) rev.forEach(function (el) { el.classList.add('in'); });
+    else {
+      var ro = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      rev.forEach(function (el) { ro.observe(el); });
+    }
+  }
+  var nums = document.querySelectorAll('[data-count]');
+  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        co.unobserve(en.target);
+        var el = en.target, to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
+        (function tick(t) {
+          var k = Math.min(1, (t - t0) / 1400), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v.toLocaleString('en-US') + suf;
+          if (k < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    });
+    nums.forEach(function (el) { co.observe(el); });
+  }
+
+  // Game page: lightbox
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+  var lb = document.querySelector('.lightbox');
+  if (shots.length && lb) {
+    var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), idx = 0, last = null;
+    function show(i) {
+      idx = (i + shots.length) % shots.length;
+      var s = shots[idx];
+      img.src = s.dataset.full; img.alt = s.dataset.cap || '';
+      cap.innerHTML = '';
+      cap.appendChild(document.createTextNode(s.dataset.cap || ''));
+      var n = document.createElement('span'); n.textContent = (idx + 1) + ' / ' + shots.length; cap.appendChild(n);
+    }
+    function open(i) { last = document.activeElement; show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('menu-open'); lb.querySelector('.lb-close').focus(); }
+    function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('menu-open'); if (last) last.focus(); }
+    shots.forEach(function (s, i) { s.addEventListener('click', function () { open(i); }); });
+    lb.querySelector('.lb-close').addEventListener('click', close);
+    lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    var x0 = null;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  }
+})();
+</script>
+</body>
+</html>
