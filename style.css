@@ -166,6 +166,8 @@ body.menu-open { overflow: hidden; }
   animation: bob 4s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translateY(-6px) rotate(-3deg); } }
 .sec-lead { max-width: 46rem; margin: -.5rem 0 1.6rem; color: var(--text); line-height: 1.65; }
+.feat a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+.feat a:hover { color: var(--accent); }
 .art.tool .shot:first-child { grid-column: auto; }
 .art.tool .shot { aspect-ratio: 16 / 10; }
 .art { display: grid; grid-template-columns: 1fr; gap: .8rem; }
