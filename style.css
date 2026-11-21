@@ -66,6 +66,7 @@ footer a { color: var(--text); }
   nav.sections a:hover::before, nav.sections a.on::before { width: 4rem; background: var(--fg); }
   main { padding-block: 6rem; gap: 6rem; }
   .sticky-h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  #projects .sticky-h { position: static; width: auto; height: auto; overflow: visible; clip: auto; margin: 0 0 1.25rem; color: var(--text); font-size: .95rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
   .item { grid-template-columns: 8rem minmax(0, 1fr); }
   ol.list:hover .item { opacity: .55; transition: opacity .15s; }
   ol.list:hover .item:hover { opacity: 1; }
