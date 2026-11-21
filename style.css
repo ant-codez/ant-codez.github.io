@@ -165,6 +165,9 @@ body.menu-open { overflow: hidden; }
 .appicon { width: 84px; height: 84px; border-radius: 20px; border: 2px solid rgba(255, 255, 255, .25); box-shadow: 0 10px 40px rgba(0, 0, 0, .5), 0 0 0 6px rgba(243, 182, 90, .15);
   animation: bob 4s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translateY(-6px) rotate(-3deg); } }
+.sec-lead { max-width: 46rem; margin: -.5rem 0 1.6rem; color: var(--text); line-height: 1.65; }
+.art.tool .shot:first-child { grid-column: auto; }
+.art.tool .shot { aspect-ratio: 16 / 10; }
 .art { display: grid; grid-template-columns: 1fr; gap: .8rem; }
 .icons { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
 .icons .shot { width: calc(50% - .4rem); max-width: 14rem; aspect-ratio: 1; border-radius: 22%; }
