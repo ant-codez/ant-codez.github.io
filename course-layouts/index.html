@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1520">
+<title>Course Layouts · Anthony Chavez</title>
+<meta name="description" content="Course Layouts, a web map editor Anthony Chavez built to design the courses of his Roblox game Surf on a Sphere.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+<nav class="mnav" id="mnav" aria-label="Menu"><a href="../#about"><small>01</small>About</a><a href="../#experience"><small>02</small>Experience</a><a href="../#projects"><small>03</small>Projects</a><a href="../#education"><small>04</small>Education</a><a href="../resume/Anthony_Chavez_Resume.pdf" target="_blank" rel="noopener"><small>05</small>Resume ↗</a>
+  <div class="social"><a href="https://github.com/ant-codez" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a href="https://www.linkedin.com/in/anthony-chavezdev" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="mailto:anthonychavez1337@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg></a><a href="../resume/Anthony_Chavez_Resume.pdf" target="_blank" rel="noopener" aria-label="Resume (PDF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></a></div>
+</nav>
+<div class="sos">
+  <div class="top"><a href="../index.html#projects">← Anthony Chavez</a></div>
+  <header class="hero">
+    <div class="bg" style="background-image:url('shots/layouts-overview.jpg')" aria-hidden="true"></div>
+    <div class="inner">
+      <p class="kicker">Design tool · Built for Surf on a Sphere · 2026</p>
+      <h1>Course Layouts</h1>
+      <p class="lead">A web map editor for designing the courses of my Roblox game. It draws every course from the game's own build code, and I sketch changes right on the map. Each mark becomes exact coordinates that the AI agents building the course work from.</p>
+      <div class="ctas"><a class="btn primary" href="#shots">See it in action ↓</a><a class="btn ghost" href="../surf-on-a-sphere/index.html">The game →</a></div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="stats reveal">
+      <div><b data-count="18">18</b><span>courses laid out on one page</span></div>
+      <div><b data-count="10">10</b><span>markup tools, from pen to grapple hook</span></div>
+      <div><b data-count="2">2</b><span>views of every course: from above and from the side</span></div>
+      <div><b data-count="4">4</b><span>difficulty sets, tutorial to challenge</span></div>
+    </div>
+
+    <section class="block" aria-labelledby="why">
+      <h2 id="why" class="reveal">Why I built it: <em>faster design rounds</em></h2>
+      <p class="sec-lead reveal">The AI agents that build the courses need precise directions. Describing a change in words ("widen the second bend, put a hook over the gap") left room to guess wrong, and every wrong guess cost another round of checking and correcting. Course Layouts turns a sketch into exact coordinates, so the change lands where I drew it.</p>
+      <div class="features">
+<article class="feat reveal" style="--c:rgba(243, 182, 90, .22);transition-delay:0ms"><span class="ico" aria-hidden="true">🎯</span><h3>Point at a change instead of explaining it</h3><p>Every mark is saved in the course's own terms: which section, how far along, how far left or right, and how high. A change arrives exact, so there's no back-and-forth about which bend or which jump I meant.</p></article>
+<article class="feat reveal" style="--c:rgba(90, 209, 243, .22);transition-delay:80ms"><span class="ico" aria-hidden="true">🧭</span><h3>Always the real course</h3><p>Each layout is drawn with the same geometry code that builds the course in the game: its floor strips, walls, banks, jumps, drops and shortcuts. I don't have to open Studio and fly around to find a spot, and the map can't drift from what players ride.</p></article>
+<article class="feat reveal" style="--c:rgba(160, 140, 255, .22);transition-delay:160ms"><span class="ico" aria-hidden="true">⏱️</span><h3>Read the pacing without a playtest</h3><p>A side view shows the whole drop, and every jump, drop, shortcut and letter is listed with the time a rider reaches it at par. A slow stretch or two features crowding each other shows up on the map before anyone rides it.</p></article>
+<article class="feat reveal" style="--c:rgba(120, 230, 150, .2);transition-delay:0ms"><span class="ico" aria-hidden="true">✏️</span><h3>New courses start as sketches</h3><p>On a blank sheet I lay track at true width and place posts, walls, hooks and letters. The sheet shows the size limits a course has to fit, so a sketch is something the game can build, not just a drawing.</p></article>
+<article class="feat reveal" style="--c:rgba(243, 122, 180, .22);transition-delay:80ms"><span class="ico" aria-hidden="true">📱</span><h3>Design from anywhere</h3><p>It's a web page, so it works on a laptop or a phone. I can review a course and mark it up away from my desk, without Roblox Studio.</p></article>
+<article class="feat reveal" style="--c:rgba(90, 209, 243, .22);transition-delay:160ms"><span class="ico" aria-hidden="true">🔄</span><h3>Stays current on its own</h3><p>After a course change is pushed, its layout is redrawn and the page republished. The page shows the newest version of every course, with the branch and commit it came from.</p></article>
+      </div>
+    </section>
+
+    <section class="block" id="shots" aria-labelledby="shotsh">
+      <h2 id="shotsh" class="reveal">Screenshots</h2>
+      <div class="art tool">
+<button class="shot reveal" type="button" data-full="shots/layouts-overview.jpg" data-cap="Course Layouts: X3 Blink Gap from above, with its side view and every jump, drop and shortcut marked" aria-label="Open screenshot: Course Layouts: X3 Blink Gap from above, with its side view and every jump, drop and shortcut marked" style="transition-delay:0ms"><img src="shots/layouts-overview.jpg" alt="Course Layouts: X3 Blink Gap from above, with its side view and every jump, drop and shortcut marked" loading="eager" decoding="async" width="1600" height="1000"><figcaption>Course Layouts: X3 Blink Gap from above, with its side view and every jump, drop and shortcut marked</figcaption></button>
+<button class="shot reveal" type="button" data-full="shots/layouts-detail.jpg" data-cap="Zoomed in on the shortcut, with the course&#x27;s features listed by time" aria-label="Open screenshot: Zoomed in on the shortcut, with the course&#x27;s features listed by time" style="transition-delay:70ms"><img src="shots/layouts-detail.jpg" alt="Zoomed in on the shortcut, with the course&#x27;s features listed by time" loading="eager" decoding="async" width="1600" height="1000"><figcaption>Zoomed in on the shortcut, with the course&#x27;s features listed by time</figcaption></button>
+<button class="shot reveal" type="button" data-full="shots/layouts-markup.jpg" data-cap="Marking up a change: a circle, a grapple hook and a note, each placed at exact course coordinates" aria-label="Open screenshot: Marking up a change: a circle, a grapple hook and a note, each placed at exact course coordinates" style="transition-delay:0ms"><img src="shots/layouts-markup.jpg" alt="Marking up a change: a circle, a grapple hook and a note, each placed at exact course coordinates" loading="lazy" decoding="async" width="1600" height="1000"><figcaption>Marking up a change: a circle, a grapple hook and a note, each placed at exact course coordinates</figcaption></button>
+<button class="shot reveal" type="button" data-full="shots/layouts-sketch.jpg" data-cap="Sketching a new course on a blank sheet with the Track, Post and Letter tools" aria-label="Open screenshot: Sketching a new course on a blank sheet with the Track, Post and Letter tools" style="transition-delay:70ms"><img src="shots/layouts-sketch.jpg" alt="Sketching a new course on a blank sheet with the Track, Post and Letter tools" loading="lazy" decoding="async" width="1600" height="1000"><figcaption>Sketching a new course on a blank sheet with the Track, Post and Letter tools</figcaption></button>
+      </div>
+    </section>
+
+    <section class="closing reveal" aria-labelledby="cta">
+      <h2 id="cta">See the courses it designed</h2>
+      <p>Surf on a Sphere is free on Roblox for PC, phone, tablet and console.</p>
+      <div class="ctas"><a class="btn primary" href="../surf-on-a-sphere/index.html">Surf on a Sphere →</a><a class="btn ghost" href="../index.html#projects">Back to portfolio</a></div>
+    </section>
+    <p class="sos-foot">Built by <a href="../index.html">Anthony Chavez</a> · Python, JavaScript and HTML Canvas, with Luau for the course geometry</p>
+  </div>
+</div>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer" aria-hidden="true">
+  <button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous screenshot">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-btn lb-next" type="button" aria-label="Next screenshot">›</button>
+</div>
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var spot = document.querySelector('.spot');
+  if (spot && !reduce) {
+    addEventListener('pointermove', function (e) {
+      spot.style.setProperty('--x', e.clientX + 'px');
+      spot.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  }
+
+  // Mobile menu
+  var btn = document.querySelector('.menu-btn'), mnav = document.getElementById('mnav');
+  function setMenu(open) {
+    if (!btn) return;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mnav.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    if (open) { var f = mnav.querySelector('a'); if (f) f.focus({ preventScroll: true }); }
+  }
+  if (btn) {
+    btn.addEventListener('click', function () { setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+    mnav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); btn.focus(); } });
+    matchMedia('(min-width: 1024px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+  }
+
+  // Sidebar: highlight the section in view
+  var links = document.querySelectorAll('nav.sections a');
+  if (links.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('on'); });
+          var a = byId[en.target.id]; if (a) a.classList.add('on');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
+  // Game page: reveal on scroll, count-up stats
+  var rev = document.querySelectorAll('.reveal');
+  if (rev.length) {
+    if (reduce || !('IntersectionObserver' in window)) rev.forEach(function (el) { el.classList.add('in'); });
+    else {
+      var ro = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      rev.forEach(function (el) { ro.observe(el); });
+    }
+  }
+  var nums = document.querySelectorAll('[data-count]');
+  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        co.unobserve(en.target);
+        var el = en.target, to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
+        (function tick(t) {
+          var k = Math.min(1, (t - t0) / 1400), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v.toLocaleString('en-US') + suf;
+          if (k < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    });
+    nums.forEach(function (el) { co.observe(el); });
+  }
+
+  // Game page: lightbox
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+  var lb = document.querySelector('.lightbox');
+  if (shots.length && lb) {
+    var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), idx = 0, last = null;
+    function show(i) {
+      idx = (i + shots.length) % shots.length;
+      var s = shots[idx];
+      img.src = s.dataset.full; img.alt = s.dataset.cap || '';
+      cap.innerHTML = '';
+      cap.appendChild(document.createTextNode(s.dataset.cap || ''));
+      var n = document.createElement('span'); n.textContent = (idx + 1) + ' / ' + shots.length; cap.appendChild(n);
+    }
+    function open(i) { last = document.activeElement; show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('menu-open'); lb.querySelector('.lb-close').focus(); }
+    function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('menu-open'); if (last) last.focus(); }
+    shots.forEach(function (s, i) { s.addEventListener('click', function () { open(i); }); });
+    lb.querySelector('.lb-close').addEventListener('click', close);
+    lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    var x0 = null;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  }
+})();
+</script>
+</body>
+</html>
